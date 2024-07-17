@@ -6,6 +6,10 @@ receivers:
       grpc:
         endpoint: "0.0.0.0:4317"
 
+connectors:
+  # The Datadog connector is necessary for APM Trace metrics.
+  datadog/connector:
+
 exporters:
   datadog:
     # env: "${DD_ENV}"
