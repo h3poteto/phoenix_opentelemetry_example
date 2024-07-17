@@ -7,7 +7,7 @@ defmodule PhoenixOpentelemetryExampleWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_phoenix_opentelemetry_example_key",
-    signing_salt: "8AtDAfDp",
+    signing_salt: "v6ifDCXr",
     same_site: "Lax"
   ]
 
@@ -49,5 +49,4 @@ defmodule PhoenixOpentelemetryExampleWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug PhoenixOpentelemetryExampleWeb.Router
-  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 end

@@ -13,7 +13,7 @@ config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "/jqZDyh0Hw1HU+wqm+3iUyjK5YIiDY7SHicaEsohiNAPQsp8MSBPxPUQqNxweQjj",
+  secret_key_base: "3xxjlaH2JlsuDNFJI8++QigkMMJLTXXCHpfco48Hy0inmQDZ++ZQ5V3FQHv5EYXI",
   watchers: []
 
 # ## SSL Support

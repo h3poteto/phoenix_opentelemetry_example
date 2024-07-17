@@ -13,7 +13,7 @@ config :phoenix_opentelemetry_example,
 # Configures the endpoint
 config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
   url: [host: "localhost"],
-  adapter: Bandit.PhoenixAdapter,
+  adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
     formats: [
       html: PhoenixOpentelemetryExampleWeb.ErrorHTML,
@@ -22,7 +22,7 @@ config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
     layout: false
   ],
   pubsub_server: PhoenixOpentelemetryExample.PubSub,
-  live_view: [signing_salt: "XEN0akcy"]
+  live_view: [signing_salt: "tT0BJp9i"]
 
 # Configures the mailer
 #
@@ -41,16 +41,6 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
-config :opentelemetry, :processors,
-  otel_batch_processor: %{
-    exporter: {:opentelemetry_exporter, %{}}
-  }
-
-config :opentelemetry_exporter,
-  otlp_protocol: :http_protobuf,
-  otlp_compression: :gzip,
-  otlp_endpoint: "http://localhost:4318"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

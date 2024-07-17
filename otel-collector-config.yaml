@@ -1,0 +1,26 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: "0.0.0.0:4318"
+      grpc:
+        endpoint: "0.0.0.0:4317"
+
+exporters:
+  datadog:
+    # env: "${DD_ENV}"
+    # service: "${DD_SERVICE}"
+    # version: "${DD_VERSION}"
+    api:
+      key: "${DD_API_KEY}"
+
+processors:
+  batch:
+    timeout: 10s
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [datadog]

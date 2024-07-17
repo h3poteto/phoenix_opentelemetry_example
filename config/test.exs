@@ -4,7 +4,7 @@ import Config
 # you can enable the server option below.
 config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "hWwUFXn8j1yRdAqNdiLca4mYqldzMDYTbSAg8mAQiL9TPvO+HZdS7vA8AyxlnkEP",
+  secret_key_base: "MuVmgUt4Gypj3l+dx76x1sTJhRWKahhS9KipVC5Qd55erCEeib4yb+c18qm2c3jI",
   server: false
 
 # In test we don't send emails.
