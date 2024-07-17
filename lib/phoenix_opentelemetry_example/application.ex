@@ -7,9 +7,13 @@ defmodule PhoenixOpentelemetryExample.Application do
 
   @impl true
   def start(_type, _args) do
+    :opentelemetry_cowboy.setup()
+    OpentelemetryPhoenix.setup(adapter: :cowboy2)
+
     children = [
       PhoenixOpentelemetryExampleWeb.Telemetry,
-      {DNSCluster, query: Application.get_env(:phoenix_opentelemetry_example, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:phoenix_opentelemetry_example, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: PhoenixOpentelemetryExample.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: PhoenixOpentelemetryExample.Finch},

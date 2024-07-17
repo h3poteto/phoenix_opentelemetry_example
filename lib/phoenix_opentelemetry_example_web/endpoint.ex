@@ -49,4 +49,5 @@ defmodule PhoenixOpentelemetryExampleWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug PhoenixOpentelemetryExampleWeb.Router
+  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 end
