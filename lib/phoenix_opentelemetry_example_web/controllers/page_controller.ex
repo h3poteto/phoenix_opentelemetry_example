@@ -9,6 +9,11 @@ defmodule PhoenixOpentelemetryExampleWeb.PageController do
       path: conn.request_path |> to_string()
     })
 
+    PhoenixOpentelemetryExample.Jobs.AccessCheck.new(%{
+      "ip" => conn.remote_ip |> :inet.ntoa() |> to_string()
+    })
+    |> Oban.insert()
+
     render(conn, :home, layout: false)
   end
 end

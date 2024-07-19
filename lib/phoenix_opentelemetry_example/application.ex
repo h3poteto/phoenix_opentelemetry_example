@@ -14,6 +14,7 @@ defmodule PhoenixOpentelemetryExample.Application do
     children = [
       PhoenixOpentelemetryExampleWeb.Telemetry,
       PhoenixOpentelemetryExample.Repo,
+      {Oban, Application.fetch_env!(:phoenix_opentelemetry_example, Oban)},
       {DNSCluster,
        query: Application.get_env(:phoenix_opentelemetry_example, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: PhoenixOpentelemetryExample.PubSub},

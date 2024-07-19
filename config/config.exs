@@ -60,6 +60,11 @@ config :opentelemetry_exporter,
   otlp_compression: :gzip,
   otlp_endpoint: "http://localhost:4318"
 
+config :phoenix_opentelemetry_example, Oban,
+  engine: Oban.Engines.Basic,
+  queues: [default: 10],
+  repo: PhoenixOpentelemetryExample.Repo
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
