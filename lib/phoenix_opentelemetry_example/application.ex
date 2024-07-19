@@ -9,7 +9,7 @@ defmodule PhoenixOpentelemetryExample.Application do
   def start(_type, _args) do
     :opentelemetry_cowboy.setup()
     OpentelemetryPhoenix.setup(adapter: :cowboy2)
-    OpentelemetryEcto.setup([:phoenix_opentelemetry_example, :repo])
+    OpentelemetryEcto.setup([:phoenix_opentelemetry_example, :repo], [{:db_statement, :enabled}])
 
     children = [
       PhoenixOpentelemetryExampleWeb.Telemetry,
