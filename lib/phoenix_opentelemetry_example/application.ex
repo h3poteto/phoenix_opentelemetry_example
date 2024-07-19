@@ -9,9 +9,11 @@ defmodule PhoenixOpentelemetryExample.Application do
   def start(_type, _args) do
     :opentelemetry_cowboy.setup()
     OpentelemetryPhoenix.setup(adapter: :cowboy2)
+    OpentelemetryEcto.setup([:phoenix_opentelemetry_example, :repo])
 
     children = [
       PhoenixOpentelemetryExampleWeb.Telemetry,
+      PhoenixOpentelemetryExample.Repo,
       {DNSCluster,
        query: Application.get_env(:phoenix_opentelemetry_example, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: PhoenixOpentelemetryExample.PubSub},
