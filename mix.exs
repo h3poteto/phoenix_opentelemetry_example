@@ -50,12 +50,14 @@ defmodule PhoenixOpentelemetryExample.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.7"},
       {:oban, "~> 2.17"},
+      {:tesla, "~> 1.11"},
       {:opentelemetry, "~> 1.4.0"},
       {:opentelemetry_phoenix, "~> 1.2.0"},
       {:opentelemetry_cowboy, "~> 0.3.0"},
       {:opentelemetry_exporter, "~> 1.7.0"},
       {:opentelemetry_ecto, "~> 1.2.0"},
-      {:opentelemetry_oban, "~> 1.0"}
+      {:opentelemetry_oban, "~> 1.0"},
+      {:opentelemetry_tesla, "~> 2.4.0"}
     ]
   end
 
