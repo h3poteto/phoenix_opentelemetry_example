@@ -7,7 +7,7 @@ defmodule PhoenixOpentelemetryExampleWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_phoenix_opentelemetry_example_key",
-    signing_salt: "v6ifDCXr",
+    signing_salt: "MLMpnNb0",
     same_site: "Lax"
   ]
 
@@ -31,6 +31,7 @@ defmodule PhoenixOpentelemetryExampleWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :phoenix_opentelemetry_example
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,

@@ -5,9 +5,17 @@
 # is restricted to this project.
 
 # General application configuration
+# This file is responsible for configuring your application
+# and its dependencies with the aid of the Config module.
+#
+# This configuration file is loaded before any dependency and
+# is restricted to this project.
+
+# General application configuration
 import Config
 
 config :phoenix_opentelemetry_example,
+  ecto_repos: [PhoenixOpentelemetryExample.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
@@ -22,7 +30,7 @@ config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
     layout: false
   ],
   pubsub_server: PhoenixOpentelemetryExample.PubSub,
-  live_view: [signing_salt: "tT0BJp9i"]
+  live_view: [signing_salt: "6jeO8nAA"]
 
 # Configures the mailer
 #

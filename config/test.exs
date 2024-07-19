@@ -1,10 +1,23 @@
 import Config
 
+# Configure your database
+#
+# The MIX_TEST_PARTITION environment variable can be used
+# to provide built-in test partitioning in CI environment.
+# Run `mix help test` for more information.
+config :phoenix_opentelemetry_example, PhoenixOpentelemetryExample.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "phoenix_opentelemetry_example_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: System.schedulers_online() * 2
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "MuVmgUt4Gypj3l+dx76x1sTJhRWKahhS9KipVC5Qd55erCEeib4yb+c18qm2c3jI",
+  secret_key_base: "ZUrEL9gTVBp7KguJhZTstVx8qTfGtI+Ay5t7IGDbWl2R/2YuJ5w7mFfz9MTGKYlK",
   server: false
 
 # In test we don't send emails.

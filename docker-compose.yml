@@ -1,5 +1,16 @@
 version: "3.0"
 services:
+  postgres:
+    image: postgres:13.9
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   otel-collector:
     image: "otel/opentelemetry-collector-contrib:0.102.0"
     command: ["--config=/etc/otel-collector-config.yaml", "--feature-gates=-exporter.datadogexporter.DisableAPMStats,-component.UseLocalHostAsDefaultHost"]
@@ -10,3 +21,6 @@ services:
       - 4317:4317 # grpc
     environment:
       - DD_API_KEY=${DD_API_KEY}
+
+volumes:
+  postgres_data:
