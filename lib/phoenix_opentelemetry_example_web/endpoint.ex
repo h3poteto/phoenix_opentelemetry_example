@@ -7,7 +7,7 @@ defmodule PhoenixOpentelemetryExampleWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_phoenix_opentelemetry_example_key",
-    signing_salt: "MLMpnNb0",
+    signing_salt: "oQPbqmhf",
     same_site: "Lax"
   ]
 

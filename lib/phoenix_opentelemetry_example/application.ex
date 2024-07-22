@@ -16,8 +16,7 @@ defmodule PhoenixOpentelemetryExample.Application do
       PhoenixOpentelemetryExampleWeb.Telemetry,
       PhoenixOpentelemetryExample.Repo,
       {Oban, Application.fetch_env!(:phoenix_opentelemetry_example, Oban)},
-      {DNSCluster,
-       query: Application.get_env(:phoenix_opentelemetry_example, :dns_cluster_query) || :ignore},
+      {DNSCluster, query: Application.get_env(:phoenix_opentelemetry_example, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: PhoenixOpentelemetryExample.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: PhoenixOpentelemetryExample.Finch},

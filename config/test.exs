@@ -17,7 +17,7 @@ config :phoenix_opentelemetry_example, PhoenixOpentelemetryExample.Repo,
 # you can enable the server option below.
 config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "ZUrEL9gTVBp7KguJhZTstVx8qTfGtI+Ay5t7IGDbWl2R/2YuJ5w7mFfz9MTGKYlK",
+  secret_key_base: "/A2LJkCQdshjfUXgejgwD1Vg8eVrjZA4eXCw/xEiJa18qa9U5NB0e5iuSK/2VvVX",
   server: false
 
 # In test we don't send emails.

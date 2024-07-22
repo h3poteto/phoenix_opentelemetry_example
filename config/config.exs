@@ -12,6 +12,13 @@
 # is restricted to this project.
 
 # General application configuration
+# This file is responsible for configuring your application
+# and its dependencies with the aid of the Config module.
+#
+# This configuration file is loaded before any dependency and
+# is restricted to this project.
+
+# General application configuration
 import Config
 
 config :phoenix_opentelemetry_example,
@@ -30,7 +37,7 @@ config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
     layout: false
   ],
   pubsub_server: PhoenixOpentelemetryExample.PubSub,
-  live_view: [signing_salt: "6jeO8nAA"]
+  live_view: [signing_salt: "w2FDLC72"]
 
 # Configures the mailer
 #
@@ -41,6 +48,28 @@ config :phoenix_opentelemetry_example, PhoenixOpentelemetryExampleWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :phoenix_opentelemetry_example, PhoenixOpentelemetryExample.Mailer,
   adapter: Swoosh.Adapters.Local
+
+# Configure esbuild (the version is required)
+config :esbuild,
+  version: "0.17.11",
+  phoenix_opentelemetry_example: [
+    args:
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+# Configure tailwind (the version is required)
+config :tailwind,
+  version: "3.4.0",
+  phoenix_opentelemetry_example: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
