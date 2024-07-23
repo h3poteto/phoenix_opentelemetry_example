@@ -66,7 +66,8 @@ defmodule PhoenixOpentelemetryExample.MixProject do
       {:opentelemetry_exporter, "~> 1.7.0"},
       {:opentelemetry_ecto, "~> 1.2.0"},
       {:opentelemetry_oban, "~> 1.0"},
-      {:opentelemetry_tesla, "~> 2.4.0"}
+      {:opentelemetry_tesla, "~> 2.4.0"},
+      {:opentelemetry_phoenixchannel, path: "../opentelemetry_phoenixchannel", override: true}
     ]
   end
 
@@ -83,7 +84,10 @@ defmodule PhoenixOpentelemetryExample.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind phoenix_opentelemetry_example", "esbuild phoenix_opentelemetry_example"],
+      "assets.build": [
+        "tailwind phoenix_opentelemetry_example",
+        "esbuild phoenix_opentelemetry_example"
+      ],
       "assets.deploy": [
         "tailwind phoenix_opentelemetry_example --minify",
         "esbuild phoenix_opentelemetry_example --minify",

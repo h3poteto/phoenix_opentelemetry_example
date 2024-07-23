@@ -6,6 +6,12 @@ receivers:
       grpc:
         endpoint: "0.0.0.0:4317"
 
+processors:
+  batch:
+    send_batch_max_size: 100
+    send_batch_size: 10
+    timeout: 10s
+
 connectors:
   # The Datadog connector is necessary for APM Trace metrics.
   datadog/connector:
@@ -18,13 +24,17 @@ exporters:
     api:
       key: "${DD_API_KEY}"
 
-processors:
-  batch:
-    timeout: 10s
-
 service:
   pipelines:
     traces:
       receivers: [otlp]
       processors: [batch]
+      exporters: [datadog/connector]
+    traces/sampling:
+      # This pipeline has a Datadog connector, a batch processor and a Datadog exporter.
+      # It receivers all traces from the Datadog connector and sends them to Datadog.
+      # Add any sampling here, so that the generated trace metrics account for all traces.
+      receivers: [datadog/connector]
+      # Add any sampling here
+      processors: []
       exporters: [datadog]
