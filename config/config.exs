@@ -79,15 +79,17 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# config :opentelemetry, traces_exporter: {:otel_exporter_stdout, []}
+
 config :opentelemetry, :processors,
   otel_batch_processor: %{
-    exporter: {:opentelemetry_exporter, %{}}
+    exporter: {:opentelemetry_exporter, %{endpoints: ["http://localhost:4318"]}}
   }
 
-config :opentelemetry_exporter,
-  otlp_protocol: :http_protobuf,
-  otlp_compression: :gzip,
-  otlp_endpoint: "http://localhost:4318"
+# config :opentelemetry_exporter,
+#   otlp_protocol: :http_protobuf,
+#   otlp_compression: :gzip,
+#   otlp_endpoint: "http://localhost:4318"
 
 config :phoenix_opentelemetry_example, Oban,
   engine: Oban.Engines.Basic,

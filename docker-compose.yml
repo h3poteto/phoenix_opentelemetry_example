@@ -20,7 +20,22 @@ services:
       - 4318:4318 # OTLP HTTP receiver
       - 4317:4317 # grpc
     environment:
-      - DD_API_KEY=${DD_API_KEY}
+      DD_API_KEY: ${DD_API_KEY}
+
+  datadog:
+    image: gcr.io/datadoghq/agent:7
+    ports:
+      - 4318:4318 # OTLP HTTP receiver
+      - 4317:4317 # grpc
+    environment:
+      DD_API_KEY: ${DD_API_KEY}
+      DD_APM_ENABLED: "true"
+      DD_HOSTNAME: "localhost"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+      - ./datadog.yaml:/etc/datadog-agent/datadog.yaml
 
 volumes:
   postgres_data:
