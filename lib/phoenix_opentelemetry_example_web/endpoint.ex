@@ -50,8 +50,6 @@ defmodule PhoenixOpentelemetryExampleWeb.Endpoint do
     pass: ["*/*"],
     json_decoder: Phoenix.json_library()
 
-  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
-
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
