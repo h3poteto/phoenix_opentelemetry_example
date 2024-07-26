@@ -67,7 +67,7 @@ defmodule PhoenixOpentelemetryExample.MixProject do
       {:opentelemetry_ecto, "~> 1.2.0"},
       {:opentelemetry_oban, "~> 1.0"},
       {:opentelemetry_tesla, "~> 2.4.0"},
-      {:opentelemetry_phoenixchannel, path: "../opentelemetry_phoenixchannel", override: true}
+      {:opentelemetry_phoenixchannel, "~> 0.1.0"}
     ]
   end
 
